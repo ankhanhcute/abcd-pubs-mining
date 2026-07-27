@@ -1,0 +1,70 @@
+[
+  {
+    "paper_id": "Aaron-2025-10.1007_s10826-025-03111-1",
+    "abcd_release": "4.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 11868,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "financial strain (parent-reported)",
+        "iv_supporting_info": "single-item parent-reported measure of subjective economic hardship",
+        "dependent_variable": "youth problem behaviors (internalizing and externalizing)",
+        "dv_supporting_info": "measured via CBCL internalizing/externalizing subscales",
+        "covariates": ["family income", "child sex"],
+        "additional_variables": ["family conflict (mediator)"]
+      }
+    ],
+    "findings": "Financial strain predicted youth problem behaviors indirectly through increased family conflict, independent of family income level."
+  },
+  {
+    "paper_id": "SYNTH-2026-example.0001",
+    "abcd_release": "5.1",
+    "time_point": "baseline",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10",
+    "sample_size": 9842,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": "composite of census-tract socioeconomic indicators",
+        "dependent_variable": "cortical thickness (prefrontal regions)",
+        "dv_supporting_info": null,
+        "covariates": ["age", "sex", "scanner site"],
+        "additional_variables": []
+      },
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": "composite of census-tract socioeconomic indicators",
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": "measured via NIH Toolbox list sorting task",
+        "covariates": ["age", "sex", "parental education"],
+        "additional_variables": ["parental education (moderator)"]
+      }
+    ],
+    "findings": "Higher neighborhood deprivation was associated with reduced prefrontal cortical thickness and lower working memory scores; the association with working memory was attenuated among children with higher parental education."
+  },
+  {
+    "paper_id": "SYNTH-2026-example.0002",
+    "abcd_release": "5.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS at 2-year followup",
+    "participant_age": "11-12",
+    "sample_size": 7215,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "screen time (self-reported hours/day)",
+        "iv_supporting_info": null,
+        "dependent_variable": "depressive symptoms (KSADS-based)",
+        "dv_supporting_info": null,
+        "covariates": ["age", "sex", "household income"],
+        "additional_variables": ["sleep duration (mediator)"]
+      }
+    ],
+    "findings": "No significant direct association was found between screen time and depressive symptoms after controlling for sleep duration, contradicting some cross-sectional reports in the literature."
+  }
+]
