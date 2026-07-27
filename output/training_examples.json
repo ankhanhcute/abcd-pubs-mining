@@ -104,6 +104,10 @@
     "completion": "Independent variable: screen time. Dependent variable: internalizing symptoms. Covariates: none reported."
   },
   {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between no variables coded and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "No independent/dependent variable relationships was reported in this paper"
+  },
+  {
     "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
     "completion": "Independent variable: peer victimization. Dependent variable: amygdala reactivity. Covariates: none reported."
   },
@@ -114,6 +118,10 @@
   {
     "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
     "completion": "Independent variable: parental warmth. Dependent variable: externalizing behavior. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between no variables coded and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "No independent/dependent variable relationships was reported in this paper"
   },
   {
     "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",

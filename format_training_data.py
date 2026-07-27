@@ -44,6 +44,7 @@ def build_examples_for_paper(paper):
             examples.append({"prompt": prompt, "completion": answer})
     else:
         answer = "No independent/dependent variable relationships was reported in this paper"
+        examples.append({"prompt": prompt, "completion": answer})
     return examples
 
 if __name__ == "__main__":
@@ -53,7 +54,7 @@ if __name__ == "__main__":
     all_examples = []
     for paper in papers:
         examples = build_examples_for_paper(paper)
-        all_examples.extend(examples)
+        all_examples.extend(examples) #not list as we dont want nested loop
         
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(all_examples, f, indent=2)
