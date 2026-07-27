@@ -1,0 +1,286 @@
+[
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: parental warmth. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: externalizing behavior. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: academic achievement. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety, parental warmth, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: neighborhood safety. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety, parental warmth, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety, parental warmth, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: BMI. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: BMI. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between prenatal substance exposure, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between prenatal substance exposure, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: pubertal timing. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between caregiver depression and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: caregiver depression. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: cortical thickness. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: parental warmth. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: peer victimization. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: parental warmth. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: parental warmth. Dependent variable: academic achievement. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between area deprivation index, area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: area deprivation index. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between area deprivation index, area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: area deprivation index. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth, parental warmth, parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth, parental warmth, parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth, parental warmth, parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: academic achievement. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, neighborhood safety, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: BMI. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, neighborhood safety, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: neighborhood safety. Dependent variable: externalizing behavior. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, neighborhood safety, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: family conflict. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: externalizing behavior. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: financial strain. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: family conflict. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: substance use initiation. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: area deprivation index. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: pubertal timing. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: caregiver depression. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between caregiver depression, sleep duration, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: caregiver depression. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between caregiver depression, sleep duration, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: sleep duration. Dependent variable: substance use initiation. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between caregiver depression, sleep duration, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: academic achievement. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth, prenatal substance exposure, sleep duration and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: parental warmth. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth, prenatal substance exposure, sleep duration and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between parental warmth, prenatal substance exposure, sleep duration and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: sleep duration. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: area deprivation index. Dependent variable: BMI. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: neighborhood safety. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: ",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: internalizing symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between caregiver depression, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: caregiver depression. Dependent variable: externalizing behavior. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between caregiver depression, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: peer victimization. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: neighborhood safety. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: prenatal substance exposure. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Brief methods note: ABCD cohort, standard covariates applied.",
+    "completion": "Independent variable: financial strain. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: neighborhood safety. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: pubertal timing. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between physical activity, physical activity, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: academic achievement. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between physical activity, physical activity, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: cortical thickness. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between physical activity, physical activity, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: BMI. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: substance use initiation. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: cortical thickness. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: family conflict. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: physical activity. Dependent variable: BMI. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between neighborhood safety and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: neighborhood safety. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: pubertal timing. Dependent variable: sleep quality. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between financial strain and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: financial strain. Dependent variable: depressive symptoms. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: screen time. Dependent variable: amygdala reactivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between area deprivation index, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: area deprivation index. Dependent variable: impulsivity. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between area deprivation index, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: pubertal timing. Dependent variable: academic achievement. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between pubertal timing, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: pubertal timing. Dependent variable: substance use initiation. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Using data from the ABCD study, we examined associations between pubertal timing, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4).",
+    "completion": "Independent variable: pubertal timing. Dependent variable: working memory performance. Covariates: none reported."
+  },
+  {
+    "prompt": "Extract the independent variable, dependent variable, covariances from this text\n\nText: Brief methods note: ABCD cohort, standard covariates applied.",
+    "completion": "Independent variable: screen time. Dependent variable: internalizing symptoms. Covariates: none reported."
+  }
+]
