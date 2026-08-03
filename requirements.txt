@@ -1,0 +1,5 @@
+torch 
+transformers>=4.38
+peft>=0.9
+datasets
+accelerate

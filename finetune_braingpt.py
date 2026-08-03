@@ -44,7 +44,7 @@ import os
 import time
 
 import torch 
-from datasets import Datasets
+from datasets import Dataset
 from peft import (
     LoraConfig,
     get_peft_model,
@@ -78,10 +78,10 @@ MODEL_REGISTRY = {
         
     },
     "mistral": {
-        "hf_id": "mistralai/Mistral-7B-v0.1"
+        "hf_id": "mistralai/Mistral-7B-v0.1",
         #Mistral-instruct-style wrapper (base v0.1 isn't instruct-tuned),
         #but this keeps format consistent is you swap to Mistral-Instruct later
-        "promp_template": "<s>[INST] {instruction} [/INST]"
+        "prompt_template": "<s>[INST] {instruction} [/INST]",
     },
     "mistralai": {
         "hf_id": "Mistral-7B-Instruct-v0.2",
@@ -161,7 +161,7 @@ def load_model_and_tokenizer(model_key: str):
         #CPU Path
         model = AutoModelForCausalLM.from_pretrained(
             hf_id, 
-            torch_dtype = torch.float_32,
+            torch_dtype = torch.float32,
             low_cpu_mem_usage=True,
         )
     if IPEX_AVAILABLE:
@@ -231,7 +231,7 @@ def main():
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--max-length", type=int, default=1024)
-    parser.add_argument("---time-check",
+    parser.add_argument("--time-check",
                         action="store_true",
                         help="Run a 5-step timing check on a small slice of data instead of full training")
     args = parser.parse_args()
