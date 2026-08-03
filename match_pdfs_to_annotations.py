@@ -43,6 +43,7 @@ import argparse
 import csv 
 import json
 import re
+import unicodedata
 from collections import defaultdict
 from pathlib import Path 
 
@@ -72,12 +73,12 @@ def find_context_window(full_text: str, excerpt: str, window: int = CONTEXT_WIND
      
     if not normalized_excerpt:
         return None
-    words = normalize_excerpt.split()
+    words = normalized_excerpt.split()
     #try full excerpt first than shrinking the prefixes, stop shrinking once
     #were belows 5 words because its( too short, we risk matching the wrong
     #location in the paper entirely (fp)
     for word_count in [len(words), 25, 15, 10, 6]:
-        if word_count > len(words) or word_coount < 5:
+        if word_count > len(words) or word_count < 5:
             continue 
         candidate = " ".join(words[:word_count])
         idx = normalized_full.find(candidate)
