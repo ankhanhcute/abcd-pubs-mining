@@ -49,8 +49,43 @@ from pathlib import Path
 import pdfplumber
 
 
-CONTEXT_WINDOW = 750 #characters bf/after the matched excerpt
+CONTEXT_WINDOW = 500 #characters bf/after the matched excerpt
+def normalize_for_search(text: str) -> str:
+    text = unicodedata.normalize("NFKC", text)
+    text = text.replace("\u2018", "'").replace("\u2019", "'")
+    text = text.replace("\u201c", '"').replace("\u201d", '"')
+    text = text.replace("\2013", "-").replace("\2014", "-")
+    text = re.sub(r"-\s*\n\s*", "", text)
+    text = re.sub(r"\s+", " ", text) 
+    return text.strip().lower()
 
+    
+
+ 
+def find_context_window(full_text: str, excerpt: str, window: int = CONTEXT_WINDOW) -> str | None:
+    """Find the excerpt in the full PDF text and return surrounding context.
+ 
+    Returns None if the excerpt can't be found (fallback needed).
+    """
+    normalized_full = normalize_for_search(full_text)
+    normalized_excerpt = normalize_for_search(excerpt)
+     
+    if not normalized_excerpt:
+        return None
+    words = normalize_excerpt.split()
+    #try full excerpt first than shrinking the prefixes, stop shrinking once
+    #were belows 5 words because its( too short, we risk matching the wrong
+    #location in the paper entirely (fp)
+    for word_count in [len(words), 25, 15, 10, 6]:
+        if word_count > len(words) or word_coount < 5:
+            continue 
+        candidate = " ".join(words[:word_count])
+        idx = normalized_full.find(candidate)
+        if idx  != 1:
+            start = max(0, idx - window)
+            end = min(len(normalized_full), idx + len(candidate) + window)
+            return normalized_full[start:end]
+    return None
 def load_annotations(csv_path: str) -> dict:
     papers = defaultdict(lambda: {"iv": [], "dv": [], "findings": []})
     with open(csv_path, "r", encoding="utf-8") as f:
@@ -69,7 +104,7 @@ def load_annotations(csv_path: str) -> dict:
                 
     return papers
 
-def find_pdf_for_papers(paper_id: str, pdf_dir: Path) -> Path | None:
+def find_pdf_for_paper(paper_id: str, pdf_dir: Path) -> Path | None:
     """
     Find the PDF File matching by the paper id
     
@@ -77,7 +112,7 @@ def find_pdf_for_papers(paper_id: str, pdf_dir: Path) -> Path | None:
     spaces,  missing .pdf extension in the csv, etc.)
     """
     
-    exact = pdf_dir / f"{paper_id}.pdf" if not paper_id.endswith(".pdf") else pdf_dir / paper_dir
+    exact = pdf_dir / f"{paper_id}.pdf" if not paper_id.endswith(".pdf") else pdf_dir / paper_id
     
     if exact.exists():
         return exact
@@ -91,6 +126,7 @@ def find_pdf_for_papers(paper_id: str, pdf_dir: Path) -> Path | None:
         if normalize(pdf_file.stem) == target:
             return pdf_file
     return None
+
 def extract_pdf_text(pdf_path: Path) -> str:
     try:
         text_parts = []
@@ -103,45 +139,13 @@ def extract_pdf_text(pdf_path: Path) -> str:
     except Exception as e:
         print(f"  WARNING: failed to extract text from {pdf_path.name}: {e}")
         return ""
- 
- 
-def normalize_for_search(text: str) -> str:
-    """Collapse whitespace so PDF extraction quirks don't break matching."""
-    return re.sub(r"\s+", " ", text).strip()
- 
- 
-def find_context_window(full_text: str, excerpt: str, window: int = CONTEXT_WINDOW) -> str | None:
-    """Find the excerpt in the full PDF text and return surrounding context.
- 
-    Returns None if the excerpt can't be found (fallback needed).
-    """
-    normalized_full = normalize_for_search(full_text)
-    normalized_excerpt = normalize_for_search(excerpt)
- 
-    # Try exact match first
-    idx = normalized_full.find(normalized_excerpt)
- 
-    # If exact match fails, try matching on just the first ~10 words --
-    # PDF extraction sometimes garbles longer excerpts partway through.
-    if idx == -1:
-        words = normalized_excerpt.split()
-        if len(words) > 10:
-            partial = " ".join(words[:10])
-            idx = normalized_full.find(partial)
- 
-    if idx == -1:
-        return None
- 
-    start = max(0, idx - window)
-    end = min(len(normalized_full), idx + len(normalized_excerpt) + window)
-    return normalized_full[start:end]
- 
- 
+
 def build_prompt(context_text: str) -> str:
     return (
         "Extract the independent variable(s) (IV) and dependent variable(s) (DV) "
         f"from this excerpt of a research paper.\n\nExcerpt: \"{context_text}\""
     )
+ 
  
  
 def main():
