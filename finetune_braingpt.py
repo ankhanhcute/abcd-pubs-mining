@@ -176,9 +176,9 @@ def load_model_and_tokenizer(model_key: str):
         r=8,
         lora_alpha=16,
         lora_dropout=0.05,
-        bias="None",
+        bias="none",
         task_type="CAUSAL_LM",
-        target_module=["q_proj","k_proj","v_proj","o_proj"]
+        target_modules=["q_proj","k_proj","v_proj","o_proj"]
         
     )
     model = get_peft_model(model, lora_config)
@@ -192,8 +192,8 @@ def run_timing_check(model, tokenizer, dataset, model_key: str):
     small_ds = dataset.select(range(min(8, len(dataset))))
     collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
     
-    agrs = TrainingArguments(
-        output_dirs="/tmp/braingpt_timing_check",
+    args = TrainingArguments(
+        output_dir="/tmp/braingpt_timing_check",
         per_device_train_batch_size=1,
         num_train_epochs=1,
         max_steps=5,
@@ -202,7 +202,7 @@ def run_timing_check(model, tokenizer, dataset, model_key: str):
         use_cpu=not GPU_AVAILABLE,
         fp16=GPU_AVAILABLE,
     )    
-    trainer = Trainer(model=model, agrs=args, train_dataset=small_ds, data_collator=collator)
+    trainer = Trainer(model=model, args=args, train_dataset=small_ds, data_collator=collator)
     
     start = time.time()
     trainer.train()
@@ -243,7 +243,7 @@ def main():
     model, tokenizer = load_model_and_tokenizer(args.model)
     
     print("Tokenizingh datasets....")
-    dataset = build_dataset(pairs, args.model, tokenizer, max_length=agrs.max_length)
+    dataset = build_dataset(pairs, args.model, tokenizer, max_length=args.max_length)
     
     if args.time_check:
         run_timing_check(model, tokenizer, dataset, args.model)
@@ -251,7 +251,7 @@ def main():
     
     collator = DataCollatorForLanguageModeling(tokenizer, mlm=True)
     training_args = TrainingArguments(
-        output_dirs=args.output,
+        output_dir=args.output,
         per_device_train_batch_Size=args.batch_size,
         num_train_epochs=args.epochs,
          save_strategy="epoch",
