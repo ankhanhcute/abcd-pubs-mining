@@ -68,8 +68,8 @@ Usage:
        --output normalized_labels.csv
 
 Requires:
-    pip install anthropic --break-system-packages
-    export ANTHROPIC_API_KEY=sk-ant-...
+    pip install openai --break-system-packages
+    export OPENAI_KEY_API=sk-ant-...
 """
 
 import csv
@@ -80,11 +80,11 @@ import time
 import re #regular expressions
 import argparse
 
-import anthropic 
+from openai import OpenAI
 
 #note DictReader
-MODEL = "claude-sonnet-4-5"
-BATCH_SIZE = 20 
+MODEL = "gpt-5.6"
+BATCH_SIZE = 50 
 SLEEP_BETWEEN_CALLS = 1.0
 MAX_RETRIES = 3
 
@@ -134,7 +134,6 @@ def build_prompt(raw_labels, existing_canonicals):
     phrase its differently (abbreviations, synonyms, sentence fragments).
     
 Rules:
-- Canonical label should be {MAX_WORDS_CLEAN} words or fewer,
 - Use most common and standard research term for the construct, not the abbreviation, 
 \
     unless the abbreviation IS the standard term (e.g, IQ).
@@ -164,7 +163,7 @@ temporary Claude error, invalid JSON
 def call_claude(client, raw_labels, existing_canonicals):
     """
     client
-    → connection to Claude
+    → connection to OpenAI
 
     raw_labels
     → labels we're trying to normalize now
@@ -174,20 +173,14 @@ def call_claude(client, raw_labels, existing_canonicals):
     """
     prompt = build_prompt(raw_labels, existing_canonicals)
     
-    response = client.messages.create(
+    response = client.responses.create(
         model=MODEL, 
-        max_tokens=2000,
-        messages=[
-            {
-                "role":"user", 
-                "content":prompt
-            }
-        ],
+        input=prompt
     )
     
-    text = response.content[0].text.strip()
+    text = response.output_text.strip()
     
-    parsed = json.load(text)
+    parsed = json.loads(text) #loads read JSON from a string
     return parsed 
 
 #===========NORMALIZED THE LABELS===========
@@ -219,15 +212,20 @@ def normalize_labels(unique_labels, client): #unique_labels is the deduplicate r
         batch = unique_labels[i:i + BATCH_SIZE]
         batches.append(batch)
         
-    for batch in batches: #loop thru all the canonical we have
+    for batch_num, batch in enumerate(batches, start=1):
+        print(
+            f"Batch {batch_num}/{len(batches)} | "
+        f"new labels: {len(batch)} | "
+        f"existing canonicals: {len(existing_canonicals)}")
         canonical_labels = call_claude(
             client, 
-            batch, 
-            existing_canonicals #its update after every batch
+            batch,
+            existing_canonicals
         )
         
+        
         if len(canonical_labels) != len(batch):
-            print("Warning: Claude returned the wrong number of labels")
+            print("Warning: OpenAI returned the wrong number of labels")
             continue
         for raw, canonical in zip(batch, canonical_labels):
             mapping[raw] = canonical 
@@ -254,11 +252,11 @@ EXAMPLE:
 def sanity_check(mapping):
     flagged = {} #to store flagged labels
     
-    for raw, canonical in mapping.items()):
+    for raw, canonical in mapping.items():
         reasons = []
         if not canonical.strip(): #if theres nothing meaningful in the canonical label, flag it
             reasons.append("empty canonical label")
-        word_count = len(canonical.strip()):
+        word_count = len(canonical.split())
         if word_count > 12:
             reasons.append("canonical label is unusually long")
             
@@ -280,7 +278,7 @@ def sanity_check(mapping):
                 break 
         raw_word_count = len(raw.split())
         
-        if row.lower().strip() == canonical.lower().strip() and raw_word_count >8:
+        if raw.lower().strip() == canonical.lower().strip() and raw_word_count >8:
             reasons.append("long raw label was left unchanged")         
         if "\n" in canonical:
             reasons.append("canonical label contains a newline")
@@ -314,7 +312,7 @@ After first sanity check:
 PROBLEM is: 
 body mass index
 BMI measure
-Ask Claude: Does each canonical match one fo the canonical identities we've already accepted
+Ask OpenAI: Does each canonical match one fo the canonical identities we've already accepted
 """
 def check_canonical_duplicates(mapping, client):
     canonical_labels = sorted(set(mapping.values())) #get the value from dict
@@ -322,14 +320,17 @@ def check_canonical_duplicates(mapping, client):
     master_canonicals = set()
     batches = []
     
-    for batch in (0, len(canonical_labels), BATCH_SIZE):
+    for i in range(0, len(canonical_labels), BATCH_SIZE):
         batch = canonical_labels[i:i + BATCH_SIZE]
-        batches.append(batch) #process the canonical labels in batches
-        resolved = call_claude(client, batch, master_canonicals)
-        
-        for old_canonical, final_canonical in zip(batch, resolved):
+        batches.append(batch)
+    for batch in batches:
+        response = call_claude(client, batch, master_canonicals)
+        if len(response) != len(batch):
+            print("Warning: OpenAI returned wrong number of canonical labels")
+            continue
+        for old_canonical, final_canonical in zip(batch, response):
             canonical_mapping[old_canonical] = final_canonical
-        for final_canonical in resolved:
+        for final_canonical in response:
             master_canonicals.add(final_canonical)
     #update the original raw -> canonical mapping            
     final_mapping = {}
@@ -363,9 +364,9 @@ def main():
     parser.add_argument("--output", required=True, help="Path for output CSV")
     args = parser.parse_args()
     
-    if not os.environ.get("ANTHROPIC_API_KEY"):
+    if not os.environ.get("OPENAI_API_KEY"):
         sys.exit(
-            "ERROR":ANTHROPIC_API_KEY is not set.""
+            "ERROR:OPENAI_API_KEY is not set."
         )
     with open(args.input, 
               newline="", 
@@ -375,30 +376,37 @@ def main():
         fieldnames = reader.fieldnames
     if args.label_column not in fieldnames:
         sys.exit(
-            f"ERROR": column {args.label_column!r} not found" #!r help with debugging
+            f"ERROR: column {args.label_column!r} not found" #!r help with debugging
             f"Available columns: {fieldnames}"
         )
         
     raw_values = []
-    for row in rows:
-        raw = rows[args.label_column].strip()
+    for row in rows:#list can be indexed not string like content
+        raw = row[args.label_column].strip()
         
         if raw:
-            raw_values.append(row)
-    unique_labels = sorted(len(raw_values))
+            raw_values.append(raw)
+        #row = whole csv row dictionary 
+        #raw just the content text
+    #deduplicate labels been eliminated
+    unique_labels = sorted(set(raw_values)) #want the list of dedup not the len
     print(
         f"Loaded {len(rows)} rows"
         f"with {len(unique_labels)} unique raw labels"
     )
-    client = anthropic.Anthropic()
+    #create the openai client
+    client = OpenAI()
+    #normalize the variable 
     mapping = normalize_labels(
         unique_labels, 
         client
     )
-    mapping = deduplicate_canonicals(
+    #sanity the dedup canonical labels
+    mapping = check_canonical_duplicates(
         mapping, 
         client
     )
+    #flagged again
     flagged = sanity_check(mapping)
     print(
         f"{len(flagged)} mappings flagged for manual review"
@@ -412,19 +420,19 @@ def main():
         encoding="utf-8"
     ) as f:
     
-    writer = csv.DictWriter(
+        writer = csv.DictWriter(
         f,
         fieldnames=out_fieldnames
     )
     
-    write.writeheader()
-    for row in rows:
-        raw = rows[args.label_column].strip()
-        
-        row["normalize_label"] = mapping.get(raw, raw)
-        writer.writerow(row)
-        
+        writer.writeheader()
+        for row in rows:
+            raw = row[args.label_column].strip()
+         
+            row["normalized_label"] = mapping.get(raw, raw)
+            writer.writerow(row)
     final_canonicals = set(mapping.values())
+    
     print(f"\nDone.")
     print(f"Wrote {len(rows)} rows to {args.output}")
     print(
@@ -433,4 +441,4 @@ def main():
         f"{len(final_canonicals)} canonical labels."
     )
 if __name__ == "__main__":
-    main
+    main()
