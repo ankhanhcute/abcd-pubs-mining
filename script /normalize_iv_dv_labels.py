@@ -199,8 +199,9 @@ Normalization rules:
 
 - Do not merge constructs merely because they are related.
 - Preserve meaningful scientific distinctions.
-- Different wording, abbreviations, synonyms, or measurement description of the same construct 
-should map to the same canonical identity. 
+- Use clear, standard research terminology when the annotation unambiguously refers to a known construct.
+- Different wording or synonyms may be normalized to the same standard construct name, but preserve measurement-specific
+distinctions when they materially change the scientific meaning. 
 - Preserve distinction that materially change the scientific meaning of a construct. Do not merge 
 constructs merely because they are related or belong to the same domain.
 - If one annotation clearly refers to multiple distinct research construct
@@ -212,6 +213,8 @@ explanatory prose, or methodological details.
 -  Canonical labels should use clear, standard research terminology while preserving 
 scientifically meaningful information 
 - Do not infer constructs that are not supported by the annotation text.
+- Do not guess the meaning of an ambiguous abbreviation or acronym. Only expand an abbreviation when its meaning is explicitly stated in the 
+annotation or can be determined with high confidence from the text itself. If the meaning is ambiguous, preserve the abbreviation rather than inventing an expansion. 
 
 Examples: {FEW_SHOT_EXAMPLES}
  
@@ -414,8 +417,8 @@ def build_dedup_prompt(canonical_labels, master_canonicals):
     
     master_lines = []
     
-    for canonical in sorted(master_lines):
-        master_line.append(f"- {canonical}")
+    for canonical in sorted(master_canonicals):
+        master_lines.append(f"- {canonical}")
     
     if master_lines:
         master_text = "\n".join(master_lines)
@@ -438,7 +441,8 @@ def build_dedup_prompt(canonical_labels, master_canonicals):
     - Do NOT split constructs. 
     - Do NOT merge constructs merely because they are related 
     - Preserved scientifically meaningful distinctions. 
-    
+    - If an annotation contains methodological or statistical language but also explicitly identifies a meaningful 
+    IV/DV construct, extract the construct rather than excluding the entire annotation.
 Existing master canonicals:
 {master_text}
 Canonical candidates:

@@ -1,2 +1,18 @@
-input/
-*.pdf
+# Generated embedding files
+data/*.npy
+data/*_meta.csv
+data/*_progress.json
+
+# Large local datasets
+data/*.xlsx
+
+# API keys
+.env
+
+# macOS files
+.DS_Store
+**/.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
