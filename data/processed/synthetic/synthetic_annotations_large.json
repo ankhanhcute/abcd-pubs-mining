@@ -1,0 +1,1489 @@
+[
+  {
+    "paper_id": "SYNTH-2026-batch.0001",
+    "abcd_release": "4.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10",
+    "sample_size": null,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": null,
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0002",
+    "abcd_release": "5.1",
+    "time_point": "2-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10",
+    "sample_size": 5000,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": "measured via a composite index of peer victimization-related items",
+        "dependent_variable": "externalizing behavior",
+        "dv_supporting_info": "assessed using a validated externalizing behavior measure",
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": "measured via a composite index of peer victimization-related items",
+        "dependent_variable": "academic achievement",
+        "dv_supporting_info": null,
+        "covariates": [
+          "sex"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0003",
+    "abcd_release": "6.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 7215,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "neighborhood safety",
+        "iv_supporting_info": null,
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": null,
+        "covariates": [
+          "household income"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": "measured via a composite index of parental warmth-related items",
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": null,
+        "covariates": [
+          "race/ethnicity",
+          "household income",
+          "sex"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": null,
+        "dependent_variable": "BMI",
+        "dv_supporting_info": null,
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between neighborhood safety, parental warmth, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0004",
+    "abcd_release": "5.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10 at baseline",
+    "sample_size": null,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": null,
+        "dependent_variable": "BMI",
+        "dv_supporting_info": null,
+        "covariates": [
+          "sex",
+          "parental education"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0005",
+    "abcd_release": "5.1",
+    "time_point": "baseline",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "11-12",
+    "sample_size": 7215,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": null,
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": "assessed using a validated amygdala reactivity measure",
+        "covariates": [
+          "age",
+          "race/ethnicity",
+          "scanner site"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": null,
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": "assessed using a validated impulsivity measure",
+        "covariates": [],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between prenatal substance exposure, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0006",
+    "abcd_release": "5.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10 at baseline",
+    "sample_size": null,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "caregiver depression",
+        "iv_supporting_info": "measured via a composite index of caregiver depression-related items",
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": null,
+        "covariates": [
+          "scanner site"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between caregiver depression and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0007",
+    "abcd_release": "4.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 9842,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": "measured via a composite index of prenatal substance exposure-related items",
+        "dependent_variable": "cortical thickness",
+        "dv_supporting_info": "assessed using a validated cortical thickness measure",
+        "covariates": [
+          "sex",
+          "age"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0008",
+    "abcd_release": "4.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10",
+    "sample_size": 7215,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": "measured via a composite index of parental warmth-related items",
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": "assessed using a validated sleep quality measure",
+        "covariates": [
+          "race/ethnicity"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": "measured via a composite index of peer victimization-related items",
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": "assessed using a validated amygdala reactivity measure",
+        "covariates": [
+          "scanner site",
+          "parental education",
+          "age"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": null,
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": null,
+        "covariates": [
+          "scanner site"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0009",
+    "abcd_release": "6.0",
+    "time_point": "2-year followup",
+    "participant_criteria": null,
+    "participant_age": null,
+    "sample_size": 5000,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": "measured via a composite index of parental warmth-related items",
+        "dependent_variable": "academic achievement",
+        "dv_supporting_info": "assessed using a validated academic achievement measure",
+        "covariates": [
+          "sex",
+          "parental education",
+          "scanner site"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0010",
+    "abcd_release": "4.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10",
+    "sample_size": null,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": "measured via a composite index of area deprivation index-related items",
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": "assessed using a validated depressive symptoms measure",
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": null,
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": "assessed using a validated impulsivity measure",
+        "covariates": [
+          "parental education"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between area deprivation index, area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0011",
+    "abcd_release": "4.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10",
+    "sample_size": null,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": "measured via a composite index of parental warmth-related items",
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": "assessed using a validated working memory performance measure",
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": null,
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": "assessed using a validated impulsivity measure",
+        "covariates": [
+          "parental education",
+          "household income"
+        ],
+        "additional_variables": []
+      },
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": "measured via a composite index of parental warmth-related items",
+        "dependent_variable": "academic achievement",
+        "dv_supporting_info": "assessed using a validated academic achievement measure",
+        "covariates": [
+          "sex",
+          "race/ethnicity",
+          "household income"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between parental warmth, parental warmth, parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0012",
+    "abcd_release": "4.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10",
+    "sample_size": 5000,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": "measured via a composite index of screen time-related items",
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": null,
+        "covariates": [
+          "age"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0013",
+    "abcd_release": "5.1",
+    "time_point": "baseline",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10",
+    "sample_size": 9842,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": null,
+        "dependent_variable": "BMI",
+        "dv_supporting_info": "assessed using a validated BMI measure",
+        "covariates": [
+          "household income",
+          "age",
+          "scanner site"
+        ],
+        "additional_variables": []
+      },
+      {
+        "independent_variable": "neighborhood safety",
+        "iv_supporting_info": "measured via a composite index of neighborhood safety-related items",
+        "dependent_variable": "externalizing behavior",
+        "dv_supporting_info": "assessed using a validated externalizing behavior measure",
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "family conflict",
+        "iv_supporting_info": null,
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between peer victimization, neighborhood safety, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0014",
+    "abcd_release": "4.0",
+    "time_point": "baseline",
+    "participant_criteria": null,
+    "participant_age": "11-12",
+    "sample_size": 11868,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": null,
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": "assessed using a validated sleep quality measure",
+        "covariates": [
+          "sex",
+          "household income"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0015",
+    "abcd_release": "5.0",
+    "time_point": "baseline",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 5000,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": "measured via a composite index of screen time-related items",
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [
+          "scanner site",
+          "age",
+          "race/ethnicity"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0016",
+    "abcd_release": "4.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 11868,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [],
+    "findings": "This paper did not report a testable IV-DV relationship within the scope of our coding scheme.",
+    "source_text": "Using data from the ABCD study, we examined associations between no variables coded and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0017",
+    "abcd_release": "6.0",
+    "time_point": "baseline",
+    "participant_criteria": null,
+    "participant_age": "9-10 at baseline",
+    "sample_size": 9842,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": "measured via a composite index of peer victimization-related items",
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": null,
+        "covariates": [
+          "sex"
+        ],
+        "additional_variables": []
+      },
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": null,
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": "assessed using a validated working memory performance measure",
+        "covariates": [
+          "parental education",
+          "sex"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between peer victimization, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0018",
+    "abcd_release": "5.1",
+    "time_point": "baseline",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "11-12",
+    "sample_size": 9842,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": null,
+        "dependent_variable": "externalizing behavior",
+        "dv_supporting_info": null,
+        "covariates": [
+          "household income",
+          "age"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0019",
+    "abcd_release": "5.1",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": null,
+    "sample_size": null,
+    "statistical_model": "logistic regression",
+    "variables": [],
+    "findings": "This paper did not report a testable IV-DV relationship within the scope of our coding scheme.",
+    "source_text": "Using data from the ABCD study, we examined associations between no variables coded and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0020",
+    "abcd_release": "5.1",
+    "time_point": "2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "11-12",
+    "sample_size": null,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "financial strain",
+        "iv_supporting_info": "measured via a composite index of financial strain-related items",
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": "assessed using a validated sleep quality measure",
+        "covariates": [
+          "household income"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0021",
+    "abcd_release": "5.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10",
+    "sample_size": 7215,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": null,
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [
+          "race/ethnicity",
+          "sex",
+          "household income"
+        ],
+        "additional_variables": []
+      },
+      {
+        "independent_variable": "family conflict",
+        "iv_supporting_info": "measured via a composite index of family conflict-related items",
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": null,
+        "covariates": [
+          "parental education"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time, family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0022",
+    "abcd_release": "4.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": null,
+    "participant_age": "9-10 at baseline",
+    "sample_size": 5000,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": null,
+        "dependent_variable": "substance use initiation",
+        "dv_supporting_info": "assessed using a validated substance use initiation measure",
+        "covariates": [
+          "age"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between parental warmth and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0023",
+    "abcd_release": "5.1",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": null,
+    "participant_age": null,
+    "sample_size": 9842,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": "measured via a composite index of area deprivation index-related items",
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": null,
+        "covariates": [
+          "age",
+          "scanner site",
+          "sex"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0024",
+    "abcd_release": "5.1",
+    "time_point": "1-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "11-12",
+    "sample_size": 7215,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": "measured via a composite index of pubertal timing-related items",
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [
+          "household income"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0025",
+    "abcd_release": "6.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": null,
+    "sample_size": 5000,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "caregiver depression",
+        "iv_supporting_info": null,
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": "assessed using a validated working memory performance measure",
+        "covariates": [
+          "scanner site",
+          "parental education"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0026",
+    "abcd_release": "4.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": null,
+    "sample_size": 9842,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "caregiver depression",
+        "iv_supporting_info": "measured via a composite index of caregiver depression-related items",
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": "assessed using a validated impulsivity measure",
+        "covariates": [
+          "parental education"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "sleep duration",
+        "iv_supporting_info": "measured via a composite index of sleep duration-related items",
+        "dependent_variable": "substance use initiation",
+        "dv_supporting_info": null,
+        "covariates": [
+          "race/ethnicity",
+          "parental education"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": "assessed using a validated sleep quality measure",
+        "covariates": [],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between caregiver depression, sleep duration, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0027",
+    "abcd_release": "4.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10",
+    "sample_size": 11868,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": null,
+        "dependent_variable": "academic achievement",
+        "dv_supporting_info": "assessed using a validated academic achievement measure",
+        "covariates": [
+          "parental education",
+          "household income"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0028",
+    "abcd_release": "5.0",
+    "time_point": "baseline",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10",
+    "sample_size": null,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "parental warmth",
+        "iv_supporting_info": null,
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": "assessed using a validated depressive symptoms measure",
+        "covariates": [
+          "parental education"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": null,
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": "assessed using a validated amygdala reactivity measure",
+        "covariates": [],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "sleep duration",
+        "iv_supporting_info": null,
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": null,
+        "covariates": [
+          "scanner site",
+          "parental education"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between parental warmth, prenatal substance exposure, sleep duration and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0029",
+    "abcd_release": "5.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "11-12",
+    "sample_size": null,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": "measured via a composite index of area deprivation index-related items",
+        "dependent_variable": "BMI",
+        "dv_supporting_info": null,
+        "covariates": [
+          "parental education",
+          "age",
+          "race/ethnicity"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between area deprivation index and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0030",
+    "abcd_release": "6.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10",
+    "sample_size": 5000,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "neighborhood safety",
+        "iv_supporting_info": null,
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": null,
+        "covariates": [],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between neighborhood safety and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0031",
+    "abcd_release": "6.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": null,
+    "sample_size": 5000,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": null,
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [
+          "scanner site",
+          "age"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": ""
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0032",
+    "abcd_release": "5.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 9842,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "caregiver depression",
+        "iv_supporting_info": null,
+        "dependent_variable": "externalizing behavior",
+        "dv_supporting_info": "assessed using a validated externalizing behavior measure",
+        "covariates": [
+          "parental education",
+          "scanner site"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "peer victimization",
+        "iv_supporting_info": "measured via a composite index of peer victimization-related items",
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": "assessed using a validated impulsivity measure",
+        "covariates": [
+          "race/ethnicity",
+          "parental education"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between caregiver depression, peer victimization and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0033",
+    "abcd_release": "5.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": "9-10",
+    "sample_size": null,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "neighborhood safety",
+        "iv_supporting_info": null,
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": null,
+        "covariates": [
+          "household income"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "prenatal substance exposure",
+        "iv_supporting_info": null,
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": null,
+        "covariates": [
+          "household income"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between neighborhood safety, prenatal substance exposure and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0034",
+    "abcd_release": "4.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "11-12",
+    "sample_size": 11868,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "financial strain",
+        "iv_supporting_info": null,
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": "assessed using a validated working memory performance measure",
+        "covariates": [],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Brief methods note: ABCD cohort, standard covariates applied."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0035",
+    "abcd_release": "4.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "11-12",
+    "sample_size": 11868,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "neighborhood safety",
+        "iv_supporting_info": "measured via a composite index of neighborhood safety-related items",
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": null,
+        "covariates": [
+          "parental education",
+          "race/ethnicity",
+          "household income"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between neighborhood safety and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0036",
+    "abcd_release": "6.0",
+    "time_point": "baseline",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "11-12",
+    "sample_size": null,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": "measured via a composite index of screen time-related items",
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": "assessed using a validated depressive symptoms measure",
+        "covariates": [
+          "household income",
+          "age",
+          "sex"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0037",
+    "abcd_release": "5.1",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": null,
+    "sample_size": 7215,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": "measured via a composite index of pubertal timing-related items",
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": "assessed using a validated working memory performance measure",
+        "covariates": [],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0038",
+    "abcd_release": "6.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "full ABCD cohort, no exclusions reported",
+    "participant_age": null,
+    "sample_size": 7215,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "academic achievement",
+        "dv_supporting_info": "assessed using a validated academic achievement measure",
+        "covariates": [
+          "age",
+          "race/ethnicity"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      },
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "cortical thickness",
+        "dv_supporting_info": "assessed using a validated cortical thickness measure",
+        "covariates": [],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": "assessed using a validated depressive symptoms measure",
+        "covariates": [
+          "parental education"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between physical activity, physical activity, physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0039",
+    "abcd_release": "6.0",
+    "time_point": "baseline",
+    "participant_criteria": null,
+    "participant_age": null,
+    "sample_size": 11868,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": "measured via a composite index of screen time-related items",
+        "dependent_variable": "BMI",
+        "dv_supporting_info": "assessed using a validated BMI measure",
+        "covariates": [
+          "scanner site",
+          "age",
+          "parental education"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0040",
+    "abcd_release": "4.0",
+    "time_point": "baseline",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10 at baseline",
+    "sample_size": 7215,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "substance use initiation",
+        "dv_supporting_info": null,
+        "covariates": [
+          "scanner site",
+          "sex"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0041",
+    "abcd_release": "6.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": null,
+    "sample_size": null,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "cortical thickness",
+        "dv_supporting_info": "assessed using a validated cortical thickness measure",
+        "covariates": [
+          "parental education"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0042",
+    "abcd_release": "6.0",
+    "time_point": "1-year followup",
+    "participant_criteria": null,
+    "participant_age": null,
+    "sample_size": 7215,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "family conflict",
+        "iv_supporting_info": "measured via a composite index of family conflict-related items",
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": null,
+        "covariates": [
+          "household income",
+          "scanner site",
+          "race/ethnicity"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between family conflict and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0043",
+    "abcd_release": "4.0",
+    "time_point": "2-year followup",
+    "participant_criteria": null,
+    "participant_age": null,
+    "sample_size": 5000,
+    "statistical_model": "logistic regression",
+    "variables": [
+      {
+        "independent_variable": "physical activity",
+        "iv_supporting_info": "measured via a composite index of physical activity-related items",
+        "dependent_variable": "BMI",
+        "dv_supporting_info": "assessed using a validated BMI measure",
+        "covariates": [
+          "scanner site"
+        ],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between physical activity and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0044",
+    "abcd_release": "5.0",
+    "time_point": "baseline",
+    "participant_criteria": null,
+    "participant_age": "11-12",
+    "sample_size": 7215,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "neighborhood safety",
+        "iv_supporting_info": null,
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": null,
+        "covariates": [
+          "age",
+          "scanner site",
+          "parental education"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between neighborhood safety and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0045",
+    "abcd_release": "5.0",
+    "time_point": "baseline",
+    "participant_criteria": null,
+    "participant_age": "9-10",
+    "sample_size": 11868,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": null,
+        "dependent_variable": "sleep quality",
+        "dv_supporting_info": null,
+        "covariates": [
+          "scanner site",
+          "age",
+          "race/ethnicity"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0046",
+    "abcd_release": "5.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10",
+    "sample_size": null,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "financial strain",
+        "iv_supporting_info": null,
+        "dependent_variable": "depressive symptoms",
+        "dv_supporting_info": null,
+        "covariates": [
+          "household income",
+          "parental education"
+        ],
+        "additional_variables": [
+          "parental education (moderator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between financial strain and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0047",
+    "abcd_release": "6.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": null,
+    "sample_size": 7215,
+    "statistical_model": "mixed-effects model",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": null,
+        "dependent_variable": "amygdala reactivity",
+        "dv_supporting_info": "assessed using a validated amygdala reactivity measure",
+        "covariates": [
+          "household income",
+          "age",
+          "parental education"
+        ],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between screen time and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0048",
+    "abcd_release": "5.0",
+    "time_point": "2-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10 at baseline",
+    "sample_size": null,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "area deprivation index",
+        "iv_supporting_info": null,
+        "dependent_variable": "impulsivity",
+        "dv_supporting_info": "assessed using a validated impulsivity measure",
+        "covariates": [
+          "race/ethnicity",
+          "household income"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": null,
+        "dependent_variable": "academic achievement",
+        "dv_supporting_info": null,
+        "covariates": [],
+        "additional_variables": []
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between area deprivation index, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0049",
+    "abcd_release": "6.0",
+    "time_point": "1-year followup",
+    "participant_criteria": "excluded participants with incomplete imaging data",
+    "participant_age": "9-10 at baseline",
+    "sample_size": null,
+    "statistical_model": "longitudinal mediation model",
+    "variables": [
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": "measured via a composite index of pubertal timing-related items",
+        "dependent_variable": "substance use initiation",
+        "dv_supporting_info": "assessed using a validated substance use initiation measure",
+        "covariates": [],
+        "additional_variables": [
+          "sleep quality (mediator)"
+        ]
+      },
+      {
+        "independent_variable": "pubertal timing",
+        "iv_supporting_info": "measured via a composite index of pubertal timing-related items",
+        "dependent_variable": "working memory performance",
+        "dv_supporting_info": null,
+        "covariates": [
+          "race/ethnicity",
+          "sex"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Using data from the ABCD study, we examined associations between pubertal timing, pubertal timing and related outcomes. Analyses controlled for standard demographic covariates. Results are reported as \"significant\" or \"non-significant\" at p < .05, and effect sizes ranged from small to moderate (Cohen's d = 0.1-0.4)."
+  },
+  {
+    "paper_id": "SYNTH-2026-batch.0050",
+    "abcd_release": "5.0",
+    "time_point": "baseline, 1-year, 2-year followup",
+    "participant_criteria": "restricted to participants who completed KSADS",
+    "participant_age": "9-10",
+    "sample_size": 5000,
+    "statistical_model": "linear regression",
+    "variables": [
+      {
+        "independent_variable": "screen time",
+        "iv_supporting_info": "measured via a composite index of screen time-related items",
+        "dependent_variable": "internalizing symptoms",
+        "dv_supporting_info": "assessed using a validated internalizing symptoms measure",
+        "covariates": [
+          "race/ethnicity",
+          "household income"
+        ],
+        "additional_variables": [
+          "family conflict (mediator)"
+        ]
+      }
+    ],
+    "findings": "We found associations between the tested variables, with effects ranging from small to moderate; full details are reported in the Results \u2014 see Table 2 (pp. 8-10).",
+    "source_text": "Brief methods note: ABCD cohort, standard covariates applied."
+  }
+]

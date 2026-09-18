@@ -1,6 +1,5 @@
 # Generated embedding files
-data/*.npy
-data/*_meta.csv
+data/embeddings/
 data/*_progress.json
 
 # Large local datasets
@@ -16,3 +15,7 @@ data/*.xlsx
 # Python cache
 __pycache__/
 *.pyc
+
+#Intermediate training checkpoints 
+models/checkpoints/
+**/checkpoints-*/
