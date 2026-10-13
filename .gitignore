@@ -19,3 +19,18 @@ __pycache__/
 #Intermediate training checkpoints 
 models/checkpoints/
 **/checkpoints-*/
+# Local virtual environment
+.venv/
+
+# Extracted PDF text cache
+*.text_cache/
+
+# Copies of files staged for upload to Kaggle
+scripts/training/kaggle/dataset/*.py
+scripts/training/kaggle/dataset/*.jsonl
+
+# Matcher outputs, run logs and job downloads
+*.jsonl.checkpoints/
+training_pairs_with_context*.jsonl
+logs/
+models/adapters/kaggle_download/

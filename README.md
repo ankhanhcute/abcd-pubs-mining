@@ -119,19 +119,43 @@ flowchart TD
 
 Human annotations are often short excerpts, while the extraction model must eventually operate on full publication text. `match_pdfs_to_annotations.py` reconstructs the surrounding context by:
 
-1. locating the source PDF using the annotation’s `Source` value;
-2. extracting text with `pdfplumber`;
-3. normalizing Unicode, quotation marks, capitalization, hyphenation, and whitespace;
-4. searching for the full annotated excerpt;
-5. progressively trying shorter prefixes when an exact match is unavailable;
-6. extracting 500 characters before and after the match; and
-7. falling back to the original annotation when a reliable PDF match cannot be recovered.
+1. locating the source PDF using the annotation’s `Source` value (accent-insensitive, so `é` in a file name matches either Unicode form);
+2. extracting text with three extractors, tried in order: layout-aware (`pymupdf4llm`), two-column split (`pdfplumber`), and plain (`pdfplumber`);
+3. normalizing Unicode, quotation marks, dashes, hyphenation, whitespace, and the Markdown/HTML markup the layout extractor adds;
+4. searching for the excerpt with increasingly forgiving methods:
+   - **exact**: whole-word match;
+   - **loose**: letters and digits only, which ignores spacing, punctuation, and dropped `fi`/`fl`/`ff` ligatures;
+   - **fragment**: each piece of an excerpt that was highlighted in several pieces;
+   - **fuzzy**: closest approximate match (similarity of at least 90 out of 100);
+5. for excerpts that occur more than once (short labels such as `SES`), choosing the occurrence that lies inside, or nearest to, another located excerpt from the same paper;
+6. extracting 1,000 characters before and after the match; and
+7. falling back to the original annotation when the excerpt cannot be found.
 
-Approximately **96% of examined annotations** were connected to publication context. Because the labels remain human-generated, this process is best described as **annotation-guided context reconstruction inspired by weak and distant supervision**.
+Every output row records its `match_status`, the extractor and method that matched, and, for repeated excerpts, how the occurrence was chosen (`resolved_by`).
+
+On the October 2026 annotation set (24,650 annotations from 1,402 papers):
+
+| Match status | Annotations | Share |
+|---|---|---|
+| `matched` (found exactly once) | 16,871 | 68.4% |
+| `matched_anchored` (repeated, placed by another excerpt) | 2,760 | 11.2% |
+| `matched_fuzzy` | 909 | 3.7% |
+| `matched_partial` | 477 | 1.9% |
+| `ambiguous_match` (repeated, location is a best guess) | 3,443 | 14.0% |
+| `excerpt_not_found` | 190 | 0.8% |
+| `pdf_not_found` | 0 | 0.0% |
+
+About **85% of annotations** are placed at a specific location in their paper. Match quality was checked by reading samples from 35 papers, not the full set. Because the labels remain human-generated, this process is best described as **annotation-guided context reconstruction inspired by weak and distant supervision**.
+
+Extracted PDF text is cached next to the output file, so only the first run is slow (about two hours for 1,402 papers); later runs with `--rerun` take a few minutes.
 
 ### Supervised Training Data
 
-The reconstructed contexts are converted into JSON Lines instruction–response examples. The current training set contains approximately **647 context-to-label pairs**.
+The reconstructed contexts are converted into JSON Lines instruction–response examples by `format_training_data.py`. For each located excerpt, the answer has one line for each of six fields: IV, DV, covariates, additional variables, IV supporting info, and DV supporting info. A line lists the paper’s labels of that kind that literally appear in the excerpt, or `none`. Excerpts with no label in them are skipped, supporting-info passages longer than 600 characters are left out, and `ambiguous_match` rows are excluded unless `--include-ambiguous` is passed.
+
+The current file, `training_pairs_v3.jsonl`, contains **5,523 context-to-label pairs from 1,349 papers**. Two earlier files are kept for comparison: `training_pairs_v2.jsonl` (1,277 pairs, IV and DV only) and `training_pairs_real_context.jsonl` (647 pairs, built with the previous matching method; in most of its pairs the IV and DV text does not appear in the excerpt).
+
+`finetune_braingpt.py` trains a LoRA adapter on these pairs. The loss is computed on the answer only, and each answer ends with the end-of-sequence token so the model learns where to stop. It uses a CUDA GPU in 4-bit when one is available and an Apple Silicon GPU in half precision otherwise. `scripts/training/kaggle/` holds the files for running it as a Kaggle batch job.
 
 Conceptual positive example:
 
@@ -448,8 +472,9 @@ The term **potential contradiction** is used because apparently conflicting find
 |---|---|
 | Working publication corpus | Approximately 1,795 papers |
 | Human annotations | 12,439 rows |
-| Context-to-label training examples | Approximately 647 |
-| Annotation-to-publication context recovery | Approximately 96% |
+| Annotations matched to PDFs (October 2026 set) | 24,650 rows from 1,402 papers |
+| Context-to-label training examples | 5,523 (from 1,349 papers) |
+| Annotation-to-publication context recovery | About 85% placed at a specific location; 14% best guess; 0.8% not found |
 | Dictionary variables analyzed | 93,699 |
 | Administrative variables excluded | 3,546 |
 | Non-administrative variables embedded | 90,153 |
@@ -473,7 +498,11 @@ abcd-pubs-mining/
 │   ├── training/
 │   │   ├── format_training_data.py
 │   │   ├── finetune_braingpt.py
-│   │   └── test_finetuned_model.py
+│   │   ├── test_finetuned_model.py
+│   │   └── kaggle/
+│   │       ├── run_finetune.py
+│   │       ├── kernel-metadata.json
+│   │       └── dataset/dataset-metadata.json
 │   ├── normalization/
 │   │   ├── normalize_iv_dv_labels.py
 │   │   ├── build_embed_text.py
@@ -490,6 +519,8 @@ abcd-pubs-mining/
 │   │   └── parsed_output.json
 │   ├── processed/
 │   │   ├── training/
+│   │   │   ├── training_pairs_v3.jsonl
+│   │   │   ├── training_pairs_v2.jsonl
 │   │   │   ├── training_pairs_real_context.jsonl
 │   │   │   ├── training_pairs_test.jsonl
 │   │   │   └── training_examples.json
