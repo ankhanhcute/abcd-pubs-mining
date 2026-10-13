@@ -1,212 +1,391 @@
 """
 match_pdfs_to_annotations.py
 ------------------------------
-Matches each paper's annotated Findings/IV/DV excerpts to the actual PDF
-text, and extracts the REAL surrounding paragraph as training context --
-instead of using just the clean one-line excerpt from Atlas.ti.
- 
-WHY THIS MATTERS
-----------------
-build_training_pairs.py (the earlier version) used the annotator's short
-Findings sentence as the prompt. That's a clean proxy, but it's not what
-the model will actually see in production -- real papers, with messy
-surrounding text. This script fixes that by finding the real paragraph
-in the actual PDF around where each annotation was pulled from.
- 
-HOW MATCHING WORKS
--------------------
-1. For each paper (Source column in the CSV), find the matching PDF file
-   by filename (the Source value should match the PDF filename, e.g.
-   "Adams-2026-....pdf").
-2. Extract all text from that PDF.
-3. Search for the annotator's Findings excerpt (or a close match, since
-   PDF text extraction sometimes has minor whitespace/formatting
-   differences) within the full text.
-4. If found, pull a window of text around it (e.g. 500 characters before
-   and after) as the real paragraph context.
-5. If NOT found (extraction differences, OCR issues, etc.), fall back to
-   using just the annotator's excerpt alone -- logged so you know which
-   papers needed the fallback.
- 
+Matches each paper's annotated excerpts (Findings, IV, DV, etc.) to the actual
+PDF text and extracts the REAL surrounding paragraph as training context.
+
+Handles mixed one-column / two-column PDFs by trying several extractors per
+paper and keeping the first one that finds the excerpt exactly once:
+
+    1. layout       (pymupdf4llm, layout-aware, handles most column layouts)
+    2. two_columns  (pdfplumber, splits each page down the middle)
+    3. plain        (pdfplumber, no column handling)
+
+Each output row records which extractor matched, so you can see empirically
+which one works for your papers.
+
+match_status values:
+    matched            excerpt found exactly once by some extractor
+    ambiguous_match    excerpt found, but more than once (no safe location)
+    excerpt_not_found  no extractor found the excerpt
+    pdf_not_found      no PDF for this paper
+
 USAGE
 -----
-    python3 match_pdfs_to_annotations.py \\
-        --csv marian_export.csv \\
-        --pdf-dir ./abcd-pubs-ai \\
+    python3 match_pdfs_to_annotations.py \
+        --csv marian_export.csv \
+        --pdf-dir ./abcd-pubs-ai \
         --output training_pairs_with_context.jsonl
- 
-REQUIRES: pip install pdfplumber
+
+REQUIRES: pip install pdfplumber pymupdf4llm
 """
 
-
 import argparse
-import csv 
+import csv
+import hashlib
 import json
+import os
 import re
 import unicodedata
-from collections import defaultdict
-from pathlib import Path 
+from collections import Counter, defaultdict
+from pathlib import Path
 
 import pdfplumber
+import pymupdf4llm
 
 
-CONTEXT_WINDOW = 500 #characters bf/after the matched excerpt
-def normalize_for_search(text: str) -> str:
+CONTEXT_WINDOW = 1000  # characters before/after the matched excerpt
+
+
+# --------------------------------------------------------------------------
+# Text normalization
+# --------------------------------------------------------------------------
+
+def clean_text(text: str) -> str:
+    """Normalize text so PDF text and annotator excerpts can be compared.
+
+    Keeps original casing (lowercase for searching happens separately).
+    """
     text = unicodedata.normalize("NFKC", text)
     text = text.replace("\u2018", "'").replace("\u2019", "'")
     text = text.replace("\u201c", '"').replace("\u201d", '"')
-    text = text.replace("\2013", "-").replace("\2014", "-")
-    text = re.sub(r"-\s*\n\s*", "", text)
-    text = re.sub(r"\s+", " ", text) 
-    return text.strip().lower()
+    text = text.replace("\u2013", "-").replace("\u2014", "-").replace("\u2212", "-")
+    text = text.replace("\u00ad", "")                  # soft hyphen
+    text = re.sub(r"-\s*\n\s*", "", text)               # join words split across lines
+    text = re.sub(r"[*_`#]", "", text)                  # markdown emphasis/headers (pymupdf4llm)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
 
-    
 
- 
-def find_context_window(full_text: str, excerpt: str, window: int = CONTEXT_WINDOW) -> str | None:
-    """Find the excerpt in the full PDF text and return surrounding context.
- 
-    Returns None if the excerpt can't be found (fallback needed).
+def prepare_text(text: str):
+    """Return (display_text, search_text). Same length so indices line up."""
+    display = clean_text(text)
+    search = display.lower()
+    if len(search) != len(display):
+        # Rare: lowercasing changed length. Fall back to lowercase for both.
+        display = search
+    return display, search
+
+
+# --------------------------------------------------------------------------
+# Matching
+# --------------------------------------------------------------------------
+
+def find_context_window(display: str, search: str, excerpt: str,
+                        window: int = CONTEXT_WINDOW):
+    """Look for the excerpt in the prepared PDF text.
+
+    Returns (status, context) where status is
+    "matched", "ambiguous", or "not_found".
     """
-    normalized_full = normalize_for_search(full_text)
-    normalized_excerpt = normalize_for_search(excerpt)
-     
-    if not normalized_excerpt:
-        return None
-    words = normalized_excerpt.split()
-    #try full excerpt first than shrinking the prefixes, stop shrinking once
-    #were belows 5 words because its( too short, we risk matching the wrong
-    #location in the paper entirely (fp)
-    for word_count in [len(words), 25, 15, 10, 6]:
-        if word_count > len(words) or word_count < 5:
-            continue 
-        candidate = " ".join(words[:word_count])
-        idx = normalized_full.find(candidate)
-        if idx  != 1:
-            start = max(0, idx - window)
-            end = min(len(normalized_full), idx + len(candidate) + window)
-            return normalized_full[start:end]
-    return None
+    target = clean_text(excerpt).lower()
+    if not target:
+        return "not_found", None
+
+    position = search.find(target)
+    if position == -1:
+        return "not_found", None
+
+    if search.find(target, position + 1) != -1:
+        return "ambiguous", None
+
+    start = max(0, position - window)
+    end = min(len(display), position + len(target) + window)
+    return "matched", display[start:end]
+
+
+# --------------------------------------------------------------------------
+# Loading annotations and finding PDFs
+# --------------------------------------------------------------------------
+
 def load_annotations(csv_path: str) -> dict:
-    papers = defaultdict(lambda: {"iv": [], "dv": [], "findings": []})
-    with open(csv_path, "r", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            src = row["Source"].strip()
-            code = row["Codes"].strip()
-            content = row["Text Content"].strip()
-            if not src or not content:
-                continue
-            if code == "Independent Variable":
-                papers[src]["iv"].append(content)
-            elif code == "Dependent Variable":
-                papers[src]["dv"].append(content)
-            elif code == "Findings":
-                papers[src]["findings"].append(content)
-                
-    return papers
+    """Group CSV rows by paper (Source)."""
+    papers = defaultdict(list)
 
-def find_pdf_for_paper(paper_id: str, pdf_dir: Path) -> Path | None:
-    """
-    Find the PDF File matching by the paper id
-    
-    Tries exact match first and then loose dmatch in case of minor files differentesd extra
-    spaces,  missing .pdf extension in the csv, etc.)
-    """
-    
-    exact = pdf_dir / f"{paper_id}.pdf" if not paper_id.endswith(".pdf") else pdf_dir / paper_id
-    
-    if exact.exists():
-        return exact
-    
-    #normalize bothside lowercase strip non-alphanumerics:
-    def normalize(s):
-        return re.sub(r"[^a-z0-9]", "", s.lower())
-    
-    target = normalize(paper_id)
-    for pdf_file in pdf_dir.glob("*.pdf"):
-        if normalize(pdf_file.stem) == target:
-            return pdf_file
+    with open(csv_path, "r", encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        required = {"Source", "Content", "Codes", "Annotator"}
+        missing = required - set(reader.fieldnames or [])
+        if missing:
+            raise ValueError(f"CSV is missing columns: {sorted(missing)}")
+
+        for row in reader:
+            source = (row["Source"] or "").strip()
+            content = (row["Content"] or "").strip()
+            code = (row["Codes"] or "").strip()
+            annotator = (row["Annotator"] or "").strip()
+
+            if not source or not content or not code:
+                continue
+            papers[source].append({
+                "content": content,
+                "code": code,
+                "annotator": annotator,
+            })
+    return dict(papers)
+
+
+def normalize_filename(name):
+    name = Path(name).name
+    if name.lower().endswith(".pdf"):
+        name = name[:-4]
+    name = re.sub(r"\s*\(\d+\)$", "", name)  # drop duplicate suffixes like (1)
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
+def build_pdf_index(pdf_dir):
+    """Scan the PDF collection once, following Google Drive links."""
+    pdf_dir = Path(pdf_dir).expanduser()
+    if not pdf_dir.is_dir():
+        raise ValueError(f"PDF folder does not exist: {pdf_dir}")
+
+    index = defaultdict(list)
+    for root, _dirs, files in os.walk(pdf_dir, followlinks=True):
+        for filename in files:
+            if filename.lower().endswith(".pdf"):
+                index[normalize_filename(filename)].append(Path(root) / filename)
+
+    print(f"Indexed {sum(len(v) for v in index.values())} PDFs")
+    return index
+
+
+def file_hash(path):
+    sha = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            sha.update(chunk)
+    return sha.hexdigest()
+
+
+def find_pdf_for_paper(paper_id, pdf_index):
+    matches = pdf_index.get(normalize_filename(paper_id), [])
+    if not matches:
+        return None
+
+    expected_name = Path(paper_id).name
+    if not expected_name.lower().endswith(".pdf"):
+        expected_name += ".pdf"
+
+    exact = [p for p in matches if p.name.lower() == expected_name.lower()]
+    if len(exact) == 1:
+        return exact[0]
+
+    candidates = exact if exact else matches
+    if len(candidates) == 1:
+        return candidates[0]
+
+    # Several copies: fine if they are byte-identical, otherwise ambiguous.
+    try:
+        hashes = {file_hash(p) for p in candidates}
+    except OSError as e:
+        print(f"  WARNING: Cannot read duplicate PDF: {e}")
+        return None
+
+    if len(hashes) == 1:
+        return sorted(candidates)[0]
+
+    print(f"  WARNING: Ambiguous PDF copies for {paper_id}")
     return None
+
+
+# --------------------------------------------------------------------------
+# PDF text extractors
+# --------------------------------------------------------------------------
 
 def extract_pdf_text(pdf_path: Path) -> str:
-    try:
-        text_parts = []
-        with pdfplumber.open(pdf_path) as pdf:
-            for page in pdf.pages:
-                page_text = page.extract_text()
-                if page_text:
-                    text_parts.append(page_text)
-        return "\n".join(text_parts)
-    except Exception as e:
-        print(f"  WARNING: failed to extract text from {pdf_path.name}: {e}")
-        return ""
+    """Plain extraction, no column handling."""
+    text_parts = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text(x_tolerance=1)
+            if page_text:
+                text_parts.append(page_text)
+    return "\n".join(text_parts)
 
-def build_prompt(context_text: str) -> str:
-    return (
-        "Extract the independent variable(s) (IV) and dependent variable(s) (DV) "
-        f"from this excerpt of a research paper.\n\nExcerpt: \"{context_text}\""
-    )
- 
- 
- 
-def main():
-    parser = argparse.ArgumentParser(description="Match annotations to real PDF context")
-    parser.add_argument("--csv", required=True, help="Path to raw Atlas.ti CSV export")
-    parser.add_argument("--pdf-dir", required=True, help="Path to folder containing paper PDFs")
-    parser.add_argument("--output", required=True, help="Path to write output JSONL")
-    args = parser.parse_args()
- 
-    pdf_dir = Path(args.pdf_dir)
-    papers = load_annotations(args.csv)
- 
-    pairs = []
-    matched_count = 0
-    fallback_count = 0
-    pdf_not_found_count = 0
- 
-    for i, (paper_id, data) in enumerate(papers.items(), 1):
-        ivs, dvs, findings = data["iv"], data["dv"], data["findings"]
-        if not (ivs and dvs and findings):
+
+def extract_pdf_text_two_columns(pdf_path: Path) -> str:
+    """Split each page down the middle: left column, then right column.
+
+    Assumes every page is two-column. Full-width titles, figures and tables
+    can get cut, which is why this is not the only extractor tried.
+    """
+    text_parts = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            midpoint = page.width / 2
+            left = page.crop((0, 0, midpoint, page.height))
+            right = page.crop((midpoint, 0, page.width, page.height))
+
+            left_text = left.extract_text(x_tolerance=1) or ""
+            right_text = right.extract_text(x_tolerance=1) or ""
+
+            page_text = "\n".join(p for p in [left_text, right_text] if p.strip())
+            text_parts.append(page_text)
+    return "\n".join(text_parts)
+
+
+def extract_pdf_text_layout(pdf_path: Path) -> str:
+    """Layout-aware extraction (outputs markdown; clean_text strips the markup)."""
+    pages = pymupdf4llm.to_markdown(str(pdf_path), page_chunks=True)
+    return "\n".join(page["text"] for page in pages)
+
+
+# Tried in this order; first extractor to find a unique match wins.
+EXTRACTORS = [
+    ("layout", extract_pdf_text_layout),
+    ("two_columns", extract_pdf_text_two_columns),
+    ("plain", extract_pdf_text),
+]
+
+
+class PaperText:
+    """Lazily extracts and caches a paper's text for each extractor."""
+
+    def __init__(self, pdf_path: Path):
+        self.pdf_path = pdf_path
+        self._cache = {}
+
+    def get(self, name, fn):
+        if name not in self._cache:
+            try:
+                self._cache[name] = prepare_text(fn(self.pdf_path))
+            except Exception as e:
+                print(f"  WARNING: {name} extractor failed on "
+                      f"{self.pdf_path.name}: {e}")
+                self._cache[name] = ("", "")
+        return self._cache[name]
+
+
+def match_annotation(paper_text: PaperText, excerpt: str):
+    """Try each extractor in order.
+
+    Returns (status, context, extractor_name).
+    """
+    saw_ambiguous = False
+
+    for name, fn in EXTRACTORS:
+        display, search = paper_text.get(name, fn)
+        if not search:
             continue
- 
-        excerpt = findings[0]
-        print(f"[{i}/{len(papers)}] {paper_id}")
- 
-        pdf_path = find_pdf_for_paper(paper_id, pdf_dir)
+
+        status, context = find_context_window(display, search, excerpt)
+
+        if status == "matched":
+            return "matched", context, name
+        if status == "ambiguous":
+            saw_ambiguous = True
+
+    if saw_ambiguous:
+        return "ambiguous_match", None, None
+    return "excerpt_not_found", None, None
+
+
+# --------------------------------------------------------------------------
+# Main
+# --------------------------------------------------------------------------
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Match ABCD annotation categories to PDF context"
+    )
+    parser.add_argument("--csv", required=True)
+    parser.add_argument("--pdf-dir", required=True)
+    parser.add_argument("--output", required=True)
+    args = parser.parse_args()
+
+    papers = load_annotations(args.csv)
+    pdf_index = build_pdf_index(args.pdf_dir)
+
+    # One checkpoint file per publication, so a crash only loses one paper.
+    checkpoint_dir = Path(args.output + ".checkpoints")
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+
+    status_counts = Counter()
+    extractor_counts = Counter()
+    pdf_not_found_papers = 0
+
+    for i, (paper_id, annotations) in enumerate(papers.items(), 1):
+        checkpoint_id = hashlib.sha256(paper_id.encode("utf-8")).hexdigest()
+        checkpoint = checkpoint_dir / f"{checkpoint_id}.jsonl"
+
+        if checkpoint.exists():
+            print(f"[{i}/{len(papers)}] Already processed: {paper_id}")
+            continue
+
+        print(f"[{i}/{len(papers)}] Processing: {paper_id}")
+
+        pdf_path = find_pdf_for_paper(paper_id, pdf_index)
+        paper_text = PaperText(pdf_path) if pdf_path else None
         if pdf_path is None:
-            print(f"  PDF not found for this paper -- using excerpt-only fallback")
-            pdf_not_found_count += 1
-            context = excerpt
-        else:
-            full_text = extract_pdf_text(pdf_path)
-            context = find_context_window(full_text, excerpt) if full_text else None
-            if context:
-                matched_count += 1
+            pdf_not_found_papers += 1
+
+        paper_pairs = []
+
+        for annotation in annotations:
+            excerpt = annotation["content"]
+
+            if paper_text is None:
+                status, context, extractor = "pdf_not_found", None, None
             else:
-                print(f"  Excerpt not found in PDF text -- using excerpt-only fallback")
-                fallback_count += 1
-                context = excerpt
- 
-        for iv in ivs:
-            for dv in dvs:
-                pairs.append({
-                    "prompt": build_prompt(context),
-                    "completion": f"IV: {iv}\nDV: {dv}",
-                })
- 
-    with open(args.output, "w", encoding="utf-8") as f:
-        for pair in pairs:
-            f.write(json.dumps(pair) + "\n")
- 
-    print(f"\n=== Summary ===")
-    print(f"Papers processed: {len(papers)}")
-    print(f"Matched to real PDF context: {matched_count}")
-    print(f"Fallback to excerpt-only (PDF found but text not matched): {fallback_count}")
-    print(f"PDF file not found at all: {pdf_not_found_count}")
-    print(f"Total training pairs written: {len(pairs)}")
-    print(f"Output: {args.output}")
- 
- 
+                status, context, extractor = match_annotation(paper_text, excerpt)
+
+            if context is None:
+                context = excerpt  # fallback: annotator's excerpt alone
+
+            status_counts[status] += 1
+            if extractor:
+                extractor_counts[extractor] += 1
+
+            paper_pairs.append({
+                "source": paper_id,
+                "annotator": annotation["annotator"],
+                "code": annotation["code"],
+                "annotation": excerpt,
+                "context": context,
+                "match_status": status,
+                "extractor": extractor,
+            })
+
+        # Write to a temp file, then rename, so a checkpoint is never half-written.
+        temporary = checkpoint.with_suffix(".tmp")
+        with open(temporary, "w", encoding="utf-8") as f:
+            for pair in paper_pairs:
+                f.write(json.dumps(pair, ensure_ascii=False) + "\n")
+        temporary.replace(checkpoint)
+
+    # Combine all completed publications into the final JSONL.
+    output = Path(args.output)
+    with open(output, "w", encoding="utf-8") as outfile:
+        for paper_id in papers:
+            checkpoint_id = hashlib.sha256(paper_id.encode("utf-8")).hexdigest()
+            checkpoint = checkpoint_dir / f"{checkpoint_id}.jsonl"
+            if not checkpoint.exists():
+                continue
+            with open(checkpoint, encoding="utf-8") as infile:
+                for line in infile:
+                    outfile.write(line)
+
+    print("\n=== SUMMARY (this run only) ===")
+    print(f"Publications in dataset: {len(papers)}")
+    print(f"Publications without PDF (new): {pdf_not_found_papers}")
+    for status in ["matched", "ambiguous_match", "excerpt_not_found", "pdf_not_found"]:
+        print(f"{status}: {status_counts[status]}")
+    print("Matches by extractor:")
+    for name, _ in EXTRACTORS:
+        print(f"  {name}: {extractor_counts[name]}")
+    print(f"Output: {output}")
+    print(f"Checkpoints: {checkpoint_dir}")
+
+
 if __name__ == "__main__":
     main()
- 
