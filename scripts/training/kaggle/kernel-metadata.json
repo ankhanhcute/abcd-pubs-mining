@@ -1,0 +1,13 @@
+{
+  "id": "ankhanhcute/braingpt-mistral-lora-v2",
+  "title": "braingpt-mistral-lora-v2",
+  "code_file": "run_finetune.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["ankhanhcute/braingpt-training-pairs-v2"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -54,7 +54,7 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
-    DataCollatorForLanguageModeling,
+    DataCollatorForSeq2Seq,
     Trainer,
     TrainingArguments,
 )
@@ -66,6 +66,8 @@ except ImportError:
     IPEX_AVAILABLE = False
 
 GPU_AVAILABLE = torch.cuda.is_available()
+#Apple Silicon Macs have their own GPU (MPS) -- no 4-bit there, but half precision fits
+MPS_AVAILABLE = not GPU_AVAILABLE and torch.backends.mps.is_available()
 
 
 #-------1. Model registry - add new base model, nothing need to change-------
@@ -117,16 +119,23 @@ def build_dataset(pairs: list[dict], model_key: str, tokenizer, max_length: int 
     """Turn prompt/completion pairs into a tokenized HF Dataset for causal LM training."""
     
     def _format_and_tokenize(example):
-        full_prompt = format_prompt(model_key, example["prompt"])
-        full_text = f"{full_prompt}\n{example['completion']}"
-        tokenized = tokenizer(
-            full_text, 
-            truncation=True, 
-            max_length=max_length,
-            padding="max_length",
-        )
-        tokenized["labels"] = tokenized["input_ids"].copy()
-        return tokenized
+        prompt_text = format_prompt(model_key, example["prompt"]) + "\n"
+        prompt_ids = tokenizer(prompt_text)["input_ids"]
+        answer_ids = tokenizer(example["completion"], add_special_tokens=False)["input_ids"]
+        #end-of-sequence token after the answer, so the model learns where to stop
+        answer_ids = answer_ids + [tokenizer.eos_token_id]
+
+        #too long? shorten the excerpt, never the answer
+        prompt_ids = prompt_ids[:max_length - len(answer_ids)]
+
+        #no padding here: the collator pads each batch to its longest
+        #example, so short excerpts don't cost as much as long ones
+        return {
+            "input_ids": prompt_ids + answer_ids,
+            "attention_mask": [1] * (len(prompt_ids) + len(answer_ids)),
+            #-100 = "don't grade this token": only the answer counts toward the loss
+            "labels": [-100] * len(prompt_ids) + answer_ids,
+        }
     ds = Dataset.from_list(pairs)
     ds = ds.map(_format_and_tokenize, remove_columns=ds.column_names)
     return ds
@@ -135,7 +144,7 @@ def build_dataset(pairs: list[dict], model_key: str, tokenizer, max_length: int 
 def load_model_and_tokenizer(model_key: str):
     hf_id = MODEL_REGISTRY[model_key]["hf_id"]
     print(f"Loading base model: {hf_id} (this downloads ~13-27GB the first time)")
-    print(f"Device detected: {'GPU (CUDA)' if GPU_AVAILABLE else 'CPU'}")
+    print(f"Device detected: {'GPU (CUDA)' if GPU_AVAILABLE else 'Apple GPU (MPS)' if MPS_AVAILABLE else 'CPU'}")
     
     tokenizer = AutoTokenizer.from_pretrained(hf_id)
     if tokenizer.pad_token is None:
@@ -157,6 +166,15 @@ def load_model_and_tokenizer(model_key: str):
             device_map="auto",
         )
         model = prepare_model_for_kbit_training(model)
+    elif MPS_AVAILABLE:
+        #Mac GPU path: half precision base model (~14GB); peft keeps the
+        #LoRA weights themselves in float32 so the optimizer stays stable
+        model = AutoModelForCausalLM.from_pretrained(
+            hf_id,
+            torch_dtype=torch.float16,
+            low_cpu_mem_usage=True,
+        )
+        model.to("mps")
     else:
         #CPU Path
         model = AutoModelForCausalLM.from_pretrained(
@@ -190,7 +208,7 @@ def load_model_and_tokenizer(model_key: str):
 def run_timing_check(model, tokenizer, dataset, model_key: str):
     print("\n=== TIMING CHECK ===")
     small_ds = dataset.select(range(min(8, len(dataset))))
-    collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
+    collator = DataCollatorForSeq2Seq(tokenizer, padding=True, label_pad_token_id=-100)
     
     args = TrainingArguments(
         output_dir="/tmp/braingpt_timing_check",
@@ -199,7 +217,7 @@ def run_timing_check(model, tokenizer, dataset, model_key: str):
         max_steps=5,
         logging_steps=1,
         save_strategy="no",
-        use_cpu=not GPU_AVAILABLE,
+        use_cpu=not (GPU_AVAILABLE or MPS_AVAILABLE),
         fp16=GPU_AVAILABLE,
     )    
     trainer = Trainer(model=model, args=args, train_dataset=small_ds, data_collator=collator)
@@ -249,15 +267,16 @@ def main():
         run_timing_check(model, tokenizer, dataset, args.model)
         return
     
-    collator = DataCollatorForLanguageModeling(tokenizer, mlm=True)
+    collator = DataCollatorForSeq2Seq(tokenizer, padding=True, label_pad_token_id=-100)
     training_args = TrainingArguments(
         output_dir=args.output,
-        per_device_train_batch_Size=args.batch_size,
+        per_device_train_batch_size=args.batch_size,
         num_train_epochs=args.epochs,
          save_strategy="epoch",
         save_total_limit=2,
+        logging_steps=25,
         report_to=[],
-        use_cpu=not GPU_AVAILABLE,
+        use_cpu=not (GPU_AVAILABLE or MPS_AVAILABLE),
         # fp16 mixed precision on GPU (real speed/memory win); fp32 on CPU
         # since mixed precision isn't well supported there.
         fp16=GPU_AVAILABLE,
